@@ -1,0 +1,5 @@
+download the plant disease detection model(512mb):
+
+Link:
+
+https://huggingface.co/adiai00/plant_disease_model/tree/main

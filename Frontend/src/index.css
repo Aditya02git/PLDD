@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:wght@100;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    font-family: 'Poppins',sans-serif;
+    overflow-x: hidden; 
+}
+
+.main-content {
+    grid-area: main-content;
+    padding: 10px; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    transform: translateX(-100%);
+    opacity: 0;
+    animation: slideIn 1s ease-out forwards;
+}
+
+.main-content1 {
+    grid-area: main-content;
+    padding: 10px; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+/* Define the slide-in animation */
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+.card1 {
+    background: #c7c7c7;
+    border: 2px solid rgb(13, 13, 60) !important;
+    width: 250px;
+    height: 180px;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    gap: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (max-width: 640px) {
+    .card1 {
+        width: 150px;  /* Make the card smaller for phones */
+        height: 130px;
+        padding: 20px;
+        margin: 10px;  /* Adjust margin for smaller screens */
+    }
+}
+
+.card1:hover{
+    transform: scale(1.05);
+}
+
+.card1 h2 {
+    margin-bottom: 0.5rem;
+}
+
+.main-content a {
+    text-decoration: none;
+    color: #333;
+}
+
+.hidden-text {
+    font-size: 10px;
+    display: none; 
+    background: #a0a0a0; 
+    color: #333; 
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    align-items: center;
+    bottom: 0; 
+    left: 0;
+    right: 0;  
+    /* white-space: nowrap;  */
+}
+
+.card1:hover .hidden-text {
+    display: block; 
+}
+
+
+
+section {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    /* min-height: 100vh; */
+}
+
+.hidden-section {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: opacity 1s, transform 1s, filter 1s;;
+}
+
+.hidden-section1 {
+    
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(100%);
+    transition: opacity 1s, transform 1s, filter 1s;
+}
+
+
+
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+@media(prefers-reduced-motion) {
+    .hidden-section {
+        transition: none;
+    }
+    .hidden-section1 {
+        transition: none;
+    }
+}
+
+/* .dark .hidden-section {
+    background-color: #0f172a;
+    background-attachment: fixed;
+  } */
+
+  /* .slick-slide > div {
+    height: 400px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ddd; 
+  } */
+
+  /* News & Updates Section */
+.news-updates {
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.news-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.news-item {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+/* For tablets and below (max-width: 768px) */
+@media (max-width: 768px) {
+    .news-updates {
+        padding: 30px 15px;
+    }
+    
+    .news-item {
+        width: 200px; /* Slightly reduce the width of news items */
+    }
+}
+
+/* For phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .news-updates {
+        padding: 20px 10px;
+    }
+    
+    .news-item {
+        width: 100%; /* Make the news items take up full width */
+    }
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.testimonials-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.testimonial {
+    background-color: white;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Interactive Stats Section */
+.stats {
+    padding: 20px 10px;
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 0px !important;
+
+    /* To center the entire section on the page */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure the section takes full viewport height */
+}
+
+.stats h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #333;
+    
+    /* Center the text */
+    text-align: center;
+}
+
+.stats-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    background-color: #f8f9fa;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.stat-item h3 {
+    font-size: 2em;
+}
+
+  

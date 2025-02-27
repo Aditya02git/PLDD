@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "./Firebaseconfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
-  
-    const handleLogin = async (e) => {
-      e.preventDefault();
-      try {
-        await signInWithEmailAndPassword(auth, email, password);
-        alert("Login Successful!");
-        navigate("/home");
-      } catch (error) {
-        alert("Invalid credentials");
-      }
-    };
-  
-    return (
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert("Login Successful!");
+      navigate("/home");
+    } catch (error) {
+      alert("Invalid credentials");
+    }
+  };
+
+  return (
     <>
       <div>
         <dialog id="my_modal_3" className="modal">
@@ -28,13 +28,15 @@ const Login = () => {
               <Link to="">
                 <button
                   className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black dark:text-white"
-                  onClick={() => document.getElementById('my_modal_3').close()}
+                  onClick={() => document.getElementById("my_modal_3").close()}
                 >
                   ✕
                 </button>
               </Link>
             </form>
-            <h3 className="font-bold text-3xl text-center text-black dark:text-white">Login</h3>
+            <h3 className="font-bold text-3xl text-center text-black dark:text-white">
+              Login
+            </h3>
             <form onSubmit={handleLogin}>
               <div>
                 <label className="input input-bordered flex items-center gap-2 m-4 bg-white">
@@ -82,7 +84,7 @@ const Login = () => {
                 </label>
               </div>
               <div>
-                <button 
+                <button
                   type="submit"
                   className="bg-black dark:bg-white dark:text-black text-white px-3 py-2 rounded-md hover:bg-slate-800 dark:hover:bg-gray-300 duration-300 cursor-pointer border-2 border-slate-600"
                 >
@@ -90,11 +92,13 @@ const Login = () => {
                 </button>
                 <div className="flex justify-around mt-4 text-black dark:text-white">
                   <p>
-                    Not registered?{' '}
+                    Not registered?{" "}
                     <Link to="/signup">
                       <span
                         className="underline text-blue-500 cursor-pointer"
-                        onClick={() => document.getElementById('my_modal_3').close()}
+                        onClick={() =>
+                          document.getElementById("my_modal_3").close()
+                        }
                       >
                         Sign Up
                       </span>

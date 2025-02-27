@@ -6,7 +6,7 @@ export default function Languages() {
 
   useEffect(() => {
     if (open) {
-      setOpenCount(prevCount => prevCount + 1); // Increment open count on each open
+      setOpenCount((prevCount) => prevCount + 1); // Increment open count on each open
     }
   }, [open]);
 
@@ -22,16 +22,18 @@ export default function Languages() {
         window.googleTranslateElementInit = () => {
           new window.google.translate.TranslateElement(
             {
-              pageLanguage: 'en',
-              includedLanguages: 'en,as,bn,gu,hi,kn,ml,mr,ne,or,pa,sa,ta,te,ur',
-              layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
+              pageLanguage: "en",
+              includedLanguages: "en,as,bn,gu,hi,kn,ml,mr,ne,or,pa,sa,ta,te,ur",
+              layout:
+                window.google.translate.TranslateElement.InlineLayout.SIMPLE,
             },
-            'google_translate_element'
+            "google_translate_element"
           );
         };
 
-        const script = document.createElement('script');
-        script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        const script = document.createElement("script");
+        script.src =
+          "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
         script.async = true;
         document.body.appendChild(script);
       } else {
@@ -80,19 +82,31 @@ export default function Languages() {
       cursor: "pointer",
     },
     googleTranslate: {
-      display: 'flex',
-      flexDirection: 'column',
-      width: 'auto'
+      display: "flex",
+      flexDirection: "column",
+      width: "auto",
     },
   };
 
   return (
     <div style={styles.container}>
-      <button className="btn btn-sm font-normal btn-ghost   text-black dark:text-white"  onClick={() => setOpen(true)}>🌐Language</button>
+      <button
+        className="btn btn-sm font-normal btn-ghost   text-black dark:text-white"
+        onClick={() => setOpen(true)}
+      >
+        🌐Language
+      </button>
       {open && (
         <div style={styles.overlay}>
           <div style={styles.modal}>
-            <div id="google_translate_element" style={{ display: 'flex', flexDirection: 'column', width: 'auto' }}>
+            <div
+              id="google_translate_element"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "auto",
+              }}
+            >
               <h2>Select Your Language</h2>
             </div>
             <style>
@@ -116,7 +130,9 @@ export default function Languages() {
                 }
               `}
             </style>
-            <button style={styles.closeButton} onClick={() => setOpen(false)}>Close</button>
+            <button style={styles.closeButton} onClick={() => setOpen(false)}>
+              Close
+            </button>
           </div>
         </div>
       )}

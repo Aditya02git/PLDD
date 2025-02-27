@@ -1,9 +1,8 @@
 import React from "react";
 import Freebook from "./Freebook";
 function Banner() {
-
   const handleScroll = () => {
-    let scrollPosition = 1280; // Default 
+    let scrollPosition = 1280; // Default
 
     if (window.innerWidth <= 768) {
       // For tablets and smaller screens
@@ -11,12 +10,12 @@ function Banner() {
     }
     if (window.innerWidth <= 480) {
       // For mobile screens
-      scrollPosition = 770;
+      scrollPosition = 1300;
     }
 
     window.scrollTo({
-      top: scrollPosition, 
-      behavior: "smooth", 
+      top: scrollPosition,
+      behavior: "smooth",
     });
   };
   return (
@@ -29,24 +28,29 @@ function Banner() {
               <span className="text-pink-500">5MinCare.Ai....!!!</span>
             </h1>
             <p className="text-[12px] md:text-xl animate-slideIn text-black dark:text-white">
-            Your trusted partner in ensuring the health of your plants and livestock.
-            <br />
-            We harness the power of artificial intelligence to provide fast and accurate disease detection for crops and animals.             Whether you're a farmer, gardener, or animal caregiver, our platform is designed to help you identify potential issues early, allowing you to             take action and protect your crops and livestock effectively.
+              Your trusted partner in ensuring the health of your plants and
+              livestock.
+              <br />
+              We harness the power of artificial intelligence to provide fast
+              and accurate disease detection for crops and animals. Whether
+              you're a farmer, gardener, or animal caregiver, our platform is
+              designed to help you identify potential issues early, allowing you
+              to take action and protect your crops and livestock effectively.
             </p>
           </div>
-          <button className="bg-orange-800 hover:bg-orange-900 m-4 p-4 rounded-md font-bold text-2xl text-center text-white dark:text-white" onClick={handleScroll}>Get Started</button>
+          <button
+            className="bg-orange-800 hover:bg-orange-900 m-4 p-4 rounded-md font-bold text-2xl text-center text-white dark:text-white"
+            onClick={handleScroll}
+          >
+            Get Started
+          </button>
         </div>
         <div className=" order-1 w-full mt-20 md:w-1/2">
-          {/* <img
-            src={banner}
-            className="md:w-[550px] md:h-[460px] md:ml-12"
-            alt=""
-          /> */}
-          <Freebook/>
+          <Freebook />
         </div>
       </div>
-            {/* Keyframe Animations */}
-            <style jsx>{`
+      {/* Keyframe Animations */}
+      <style jsx>{`
         @keyframes fadeIn {
           from {
             opacity: 0;

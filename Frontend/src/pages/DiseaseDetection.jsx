@@ -360,7 +360,7 @@ const DiseaseForm = () => {
             Homemade Solutions for Livestock Disease
           </h1>
           {fetchingLivestock ? (
-            <p>⏳ Loading solutions...</p>
+            <p className="text-black dark:text-white">◌ Loading solutions...</p>
           ) : (
             <ul className="bg-gray-300 dark:bg-slate-700 border-2 rounded-2xl p-4 flex justify-left flex-wrap">
               {livestockSolutions.map((s, i) => (
@@ -427,7 +427,7 @@ const DiseaseForm = () => {
             Homemade Solutions for Plant Disease
           </h1>
           {fetchingPlant ? (
-            <p>⏳ Loading solutions...</p>
+            <p>◌ Loading solutions...</p>
           ) : (
             <ul className=" bg-gray-300 dark:bg-slate-700 border-2 rounded-2xl p-4 flex justify-left flex-wrap">
               {plantSolutions.map((s, i) => (
@@ -437,7 +437,7 @@ const DiseaseForm = () => {
           )}
         </div>
       </div>
-      
+
       <NotificationForm />
       <Footer />
     </>

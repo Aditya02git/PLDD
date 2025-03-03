@@ -1,47 +1,66 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
-const Testimonials = () => {
+const API_KEY = "AIzaSyBPgDAssGaJDSmBkPhMWLFJvjpq9jBgGrA";
+const prompt =
+  "Discuss the current affairs related to plant and livestock diseases to the point?";
+
+export default function NewsFeed() {
+  const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+          }
+        );
+        const data = await response.json();
+
+        console.log("API Response:", data); // Debugging Line
+
+        const newsText =
+          data?.candidates?.[0]?.content?.parts
+            ?.map((part) => part.text)
+            .join(" ") || "No data available.";
+        setNews(newsText.split("\n\n"));
+      } catch (err) {
+        console.error("Fetch Error:", err);
+        setError("Failed to fetch news.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
   return (
-    <>
-      {/* Testimonials Section */}
-      <section className="bg-white  testimonials dark:bg-slate-800">
-        <h2 className="pb-[50px] text-4xl font-bold text-black dark:text-white">
-          Current Affairs
-        </h2>
-        <div className="testimonials-grid text-black dark:text-black">
-          <div className="testimonial rounded-md">
-            <blockquote>
-              "Mysterious poultry disease kills 2,500 in Telangana. Should you
-              be worried?"
-            </blockquote>
-            <a
-              className="font-bold"
-              href="https://www.business-standard.com/india-news/telangana-poultry-disease-outbreak-konnur-chicken-deaths-125022100803_1.html"
-              target="_blank"
-              rel="noopener noreferrer"
+    <div className="p-6 bg-gray-200 dark:bg-slate-800 min-h-screen">
+      <h1 className="text-black dark:text-white text-2xl font-bold mb-4">
+        📌Current Affairs(Latest News):
+      </h1>
+      {loading && <p>Loading latest updates...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {news
+          .filter(
+            (item, index) => item.length >= 150 && index !== news.length - 1
+          ) // Hide items with < 30 chars & last item
+          .map((item, index) => (
+            <div
+              key={index}
+              className="bg-white dark:bg-white p-4 rounded-lg shadow"
             >
-              Show Details
-            </a>
-          </div>
-          <div className="testimonial rounded-md">
-            {/* Use a valid image path or placeholder */}
-            <blockquote>
-              "Multi-institutional team tracks virus behind India’s lumpy skin
-              cattle disease"
-            </blockquote>
-            <a
-              className="font-bold"
-              href="https://indianexpress.com/article/india/lumpy-skin-cattle-disease-india-multi-institutional-team-9248981/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Show Details
-            </a>
-          </div>
-        </div>
-      </section>
-    </>
+              <p className="text-black dark:text-black">{item}</p>
+            </div>
+          ))}
+      </div>
+    </div>
   );
-};
-
-export default Testimonials;
+}
